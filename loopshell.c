@@ -5,14 +5,14 @@
  */
 void loop_shell(void)
 {
-char *input, *args[2];
+char *input, *args[MAX_ARGS + 1];
 int status;
 pid_t pid;
 while (1)
 {
 printf("cisfun$ ");
-input = malloc(sizeof(char) * BUFFER_SIZE);
-if (fgets(input, BUFFER_SIZE, stdin) == NULL)
+input = malloc(sizeof(char) * B_SIZE);/*allocate mem for input*/
+if (fgets(input, B_SIZE, stdin) == NULL)
 {
 free(input);
 exit(0);
@@ -23,8 +23,7 @@ if (strcmp(input, "exit") == 0)/**check if input = exit if so quit shell*/
 free(input);
 exit(0);
 }
-args[0] = input;
-args[1] = NULL;
+parse_input(input, args);/*parse input*/
 pid = fork();/*create child process*/
 if (pid == -1)/*if failed print error*/
 {
