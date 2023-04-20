@@ -1,14 +1,15 @@
 #include "shell.h"
-#include <stdlib.h>
-void freeargs (char **args)
+/**
+ * free_args - free args
+ * @args: arguments
+ * return: void
+*/
+void free_args(char **args)
 {
-int i;
-for (i = 0; i < MAX_ARGS; i++)
+int i, j;
+i = 0;
+for (j = 0; j < i; j++)
 {
-if (args[i] != NULL)
-{
-free(args[i]);
-args[i] = NULL;
-}
+free(args[j]);
 }
 }

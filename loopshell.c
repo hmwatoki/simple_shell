@@ -43,5 +43,6 @@ else
 wait(&status);/*wait for child process to complete*/
 }
 free(input);
+free_args(args);/*free args*/
 }
 }

@@ -15,4 +15,5 @@
 #include <string.h>
 void loop_shell(void);
 void parse_input(char *input, char **args);
+void free_args(char **args);
 #endif
