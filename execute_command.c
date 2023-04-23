@@ -18,7 +18,7 @@ char *cmd_path;
 cmd_path = find_command_in_path(args[0]);
 if (!cmd_path)
 {
-printf("%s: command not found\n", args[0]);
+fprintf(stderr, "%s: %d: %s: not found\n", "./hsh", 1, args[0]);
 return;
 }
 pid = fork();
