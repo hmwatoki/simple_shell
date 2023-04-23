@@ -6,7 +6,7 @@ This is a simple shell project created by Harrison Mwatoki and More Argwings Kod
 
 To compile the code, use the following command:
 
-gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o hsh
+`gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o hsh`
 
 
 This will compile all the `*.c` files in the current directory and create an executable file named `hsh`. 
