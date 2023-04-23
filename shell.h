@@ -5,7 +5,7 @@
 #define ARGS_SIZE 128
 /*
  * File: shell.h
- * Auth: hmwatoki
+ * Auth: Hmwatoki & MoreKodhek
  * Description: simple shell header file
  */
 #include <stdio.h>
