@@ -4,6 +4,7 @@
 #include <unistd.h>
 #include <sys/wait.h>
 #include "shell.h"
+
 /**
  * execute_command - function to execute the command
  * @args: arguments passed by the user
@@ -13,31 +14,8 @@ void execute_command(char **args)
 {
 pid_t pid;
 int status;
-char *path, *token;
-char *cmd_path = NULL;
-if (access(args[0], X_OK) == 0)
-{
-cmd_path = args[0];
-}
-else
-{
-path = strdup(getenv("PATH"));
-token = strtok(path, ":");
-while (token)
-{
-size_t len = strlen(token) + strlen(args[0]) + 2;
-cmd_path = malloc(len);
-snprintf(cmd_path, len, "%s/%s", token, args[0]);
-if (access(cmd_path, X_OK) == 0)
-{
-break;
-}
-free(cmd_path);
-cmd_path = NULL;
-token = strtok(NULL, ":");
-}
-free(path);
-}
+char *cmd_path;
+cmd_path = find_command_in_path(args[0]);
 if (!cmd_path)
 {
 printf("%s: command not found\n", args[0]);
