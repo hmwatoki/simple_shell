@@ -21,10 +21,16 @@ if (strcmp(input, "exit") == 0)/**check if input = exit if so quit shell*/
 free(input);
 exit(0);
 }
+else if (strcmp(input, "env") == 0)
+{
+print_env();/*prints environment variables*/
+}
+else
+{
 parse_input(input, args);/*parse input*/
 execute_command(args);
-free(input);
 free_args(args);/*free args*/
 }
+free(input);
 }
-
+}

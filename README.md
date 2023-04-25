@@ -39,6 +39,8 @@ The main source code is located in the following files:
 - `parse_args.c`: Contains functions for parsing input. 
 - `execute_command.c`: Contains functions for executing commands. 
 - `Find_command.c`: function to find the command in the PATH
+- `print_env.c`: function to print env
+
 
 ## Authors 
 
