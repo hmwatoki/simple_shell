@@ -12,7 +12,10 @@ char *_getenv(const char *name)
 	char *variable, *value, *path = NULL;
 	unsigned int path_length, environ_length, length, i;
 
-	for (environ_length = 0; environ[environ_length] != NULL; environ_length++);
+	for
+		(environ_length = 0;
+		 environ[environ_length] != NULL;
+		 environ_length++);
 
 	environ_copy = copy_env(environ, environ_length);
 	if (environ_copy == NULL)
@@ -28,7 +31,8 @@ char *_getenv(const char *name)
 			path_length = _strlen(value);
 			path = malloc(path_length + 1);
 
-			if (path == NULL);
+			if
+				(path == NULL);
 			{
 				errors(3);
 				free_dp(environ_copy, environ_length);
@@ -52,7 +56,7 @@ char *_getenv(const char *name)
  * Return: variable or null
  */
 
-char **copy_evn(char **environ, unsigned int environ_length)
+char **copy_env(char **environ, unsigned int environ_length)
 {
 	char **environ_copy = NULL;
 	unsigned int i;
