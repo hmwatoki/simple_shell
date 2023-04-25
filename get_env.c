@@ -79,7 +79,7 @@ char **copy_env(char **environ, unsigned int environ_length)
 		}
 	}
 
-	environ_copy[i} = NULL;
+	environ_copy[i] = NULL;
 
 	return (environ_copy);
 }
