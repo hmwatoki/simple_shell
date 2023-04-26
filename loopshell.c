@@ -8,7 +8,7 @@ void loop_shell(void)
 char *input, *args[MAX_ARGS + 1];
 while (1)
 {
-printf("cisfun$ ");
+printf("($) ");
 input = malloc(sizeof(char) * B_SIZE);/*allocate mem for input*/
 if (fgets(input, B_SIZE, stdin) == NULL)
 {
