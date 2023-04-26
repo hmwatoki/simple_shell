@@ -15,29 +15,12 @@ void execute_command(char **args)
 pid_t pid;
 int status;
 char *cmd_path;
-char *path = getenv("PATH");
-char *path_copy = strdup(path);
-char *dir = strtok(path_copy, ":");
-
-while (dir != NULL)
-{
-  cmd_path = malloc(strlen(dir) + strlen(args[0]) + 2);
-  sprintf(cmd_path, "%s/%s", dir, args[0]);
-  if (access(cmd_path, F_OK) == 0)
-    break;
-
-  free(cmd_path);
-  dir = strtok(NULL, ":");
-}
-
-free(path_copy);
-
-if (dir == NULL)
+cmd_path = find_command_in_path(args[0]);
+if (!cmd_path)
 {
 fprintf(stderr, "%s: %d: %s: not found\n", "./hsh", 1, args[0]);
 return;
 }
-
 pid = fork();
 if (pid == -1)
 {
