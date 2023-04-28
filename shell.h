@@ -17,7 +17,7 @@ extern char **environ;
 void loop_shell(void);
 void parse_input(char *input, char **args);
 void free_args(char **args);
-void execute_command(char **args);
+int execute_command(char **args);
 char *find_command_in_path(char *command);
 void print_env(void);
 #endif

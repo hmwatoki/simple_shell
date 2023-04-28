@@ -4,37 +4,31 @@
 #include <unistd.h>
 #include <sys/wait.h>
 #include "shell.h"
-
 /**
  * execute_command - function to execute the command
  * @args: arguments passed by the user
  * Return: void
  */
-void execute_command(char **args)
+int execute_command(char **args)
 {
 pid_t pid;
 int status;
 pid = fork();
-if (pid == 0)
+if (pid == 0) /* child process */
 {
-/* Child process */
-if (execvp(args[0], args) == -1)
-{
-perror("hsh");
+execvp(args[0], args); /* execute command */
+/* If we reach this point, execvp has failed */
+printf("Error: command not found\n");
+exit(1);
 }
-exit(EXIT_FAILURE);
-}
-else if (pid < 0)
+else if (pid < 0) /* fork failed */
 {
-/* Error forking */
-perror("hsh");
+printf("Error: fork failed\n");
+exit(1);
 }
-else
+else /* parent process */
 {
-/* Parent process */
-do {waitpid(pid, &status, WUNTRACED);
-} while (!WIFEXITED(status) && !WIFSIGNALED(status));
-printf("\n");
-free_args(args);
+wait(&status); /* wait for child process to finish */
+return (status);
 }
 }
