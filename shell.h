@@ -20,4 +20,5 @@ void free_args(char **args);
 int execute_command(char **args);
 char *find_command_in_path(char *command);
 void print_env(void);
+char* _strtok(char* str, const char* delim);
 #endif
