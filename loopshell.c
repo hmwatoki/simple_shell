@@ -30,7 +30,7 @@ else
 {
 parse_input(input, args);/*parse input*/
 execute_command(args);
-free_args(args);/*free args*/
+free_args(args);/*free args*/;
 }
 free(input);
 }

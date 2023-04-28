@@ -34,6 +34,7 @@ else
 /* Parent process */
 do {waitpid(pid, &status, WUNTRACED);
 } while (!WIFEXITED(status) && !WIFSIGNALED(status));
+printf("\n");
 free_args(args);
 }
 }
