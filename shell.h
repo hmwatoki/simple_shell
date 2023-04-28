@@ -22,4 +22,5 @@ char *find_command_in_path(char *command);
 void print_env(void);
 char *_strtok(char *str, const char *delim);
 void execute_exit_command(char *input);
+void check_exit_status(int status);
 #endif
