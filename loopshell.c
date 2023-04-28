@@ -10,7 +10,6 @@ size_t input_len = 0;
 int status;
 while (1)
 {
-printf("($) ");
 input = NULL;
 if (getline(&input, &input_len, stdin) == -1)
 {
