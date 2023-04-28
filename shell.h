@@ -3,6 +3,7 @@
 #define B_SIZE 1024
 #define MAX_ARGS 10
 #define ARGS_SIZE 128
+#define PATH_MAX 4096
 /*
  * File: shell.h
  * Auth: Hmwatoki & MoreKodhek
@@ -23,4 +24,5 @@ void print_env(void);
 char *_strtok(char *str, const char *delim);
 void execute_exit_command(char *input);
 void check_exit_status(int status);
+void change_directory(char *dir);
 #endif

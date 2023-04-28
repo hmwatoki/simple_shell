@@ -5,7 +5,7 @@
  */
 void loop_shell(void)
 {
-char *input, *args[MAX_ARGS + 1];
+char *input, *args[MAX_ARGS + 1], *dir;
 size_t input_len = 0;
 int status;
 while (1)
@@ -29,6 +29,11 @@ execute_exit_command(input);
 else if (strcmp(input, "env") == 0)
 {
 print_env();
+}
+else if (strncmp(input, "cd ", 3) == 0)
+{
+dir = input + 3;
+change_directory(dir);
 }
 else
 {
