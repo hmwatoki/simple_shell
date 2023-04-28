@@ -6,10 +6,10 @@
 */
 void free_args(char **args)
 {
-int i, j;
-i = 0;
-for (j = 0; j < i; j++)
+int i;
+for (i = 0; args[i] != NULL; i++)
 {
-free(args[j]);
+free(args[i]);
+args[i] = NULL;
 }
 }

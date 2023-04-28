@@ -6,11 +6,12 @@
 void loop_shell(void)
 {
 char *input, *args[MAX_ARGS + 1];
+size_t input_len = 0;
 while (1)
 {
 printf("($) ");
-input = malloc(sizeof(char) * B_SIZE);/*allocate mem for input*/
-if (fgets(input, B_SIZE, stdin) == NULL)
+input = NULL;
+if (getline(&input, &input_len, stdin) == -1)
 {
 free(input);
 exit(0);

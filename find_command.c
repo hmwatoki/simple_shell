@@ -22,14 +22,19 @@ token = strtok(path, ":");
 while (token)
 {
 size_t len = strlen(token) + strlen(command) + 2;
+if (cmd_path == NULL)
+{
 cmd_path = malloc(len);
+}
+else
+{
+cmd_path = realloc(cmd_path, len);
+}
 snprintf(cmd_path, len, "%s/%s", token, command);
 if (access(cmd_path, X_OK) == 0)
 {
 break;
 }
-free(cmd_path);
-cmd_path = NULL;
 token = strtok(NULL, ":");
 }
 free(path);
