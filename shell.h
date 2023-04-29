@@ -25,4 +25,6 @@ char *_strtok(char *str, const char *delim);
 void execute_exit_command(char *input);
 void check_exit_status(int status);
 void change_directory(char *dir);
+void handle_fork(char **command);
+int handle_and_or(char **args, int status, int and_or);
 #endif

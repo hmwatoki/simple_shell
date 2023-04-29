@@ -11,24 +11,26 @@
  */
 int execute_command(char **args)
 {
-pid_t pid;
-int status;
-pid = fork();
-if (pid == 0) /* child process */
+int status = 0;
+int i = 0;
+int and_or = 0;
+char *command[MAX_ARGS + 1] = {NULL};
+while (args[i] != NULL)
 {
-execvp(args[0], args); /* execute command */
-/* If we reach this point, execvp has failed */
-printf("Error: command not found\n");
-exit(1);
-}
-else if (pid < 0) /* fork failed */
+if (strcmp(args[i], "&&") == 0)
 {
-printf("Error: fork failed\n");
-exit(1);
+and_or = 1;
+break;
 }
-else /* parent process */
+else if (strcmp(args[i], "||") == 0)
 {
-wait(&status); /* wait for child process to finish */
-return (status);
+and_or = 2;
+break;
 }
+command[i] = args[i];
+i++;
+}
+handle_fork(command);
+wait(&status);
+return (handle_and_or(args + i + 1, status, and_or));
 }
